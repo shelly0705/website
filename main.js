@@ -30,7 +30,8 @@ function findBook(library, title, author) {
     if (book.title === title && book.author === author) {
       return true;
     }
-  return false;
+    return false;
+  }
 }
 
 console.log(findBook("Harry potter - 1", "JK"));
