@@ -1,5 +1,5 @@
 console.log("`main.js` is running...");
-import { showLibrary } from "./show-library";
+import { showLibrary } from "../show-library.js";
 
 // 創建一個空的圖書管理系統物件 library。
 const library = [];
