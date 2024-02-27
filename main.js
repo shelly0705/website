@@ -1,5 +1,5 @@
 console.log("`main.js` is running...");
-import { showLibrary } from "../show-library.js";
+import { showLibrary } from "./show-library.js";
 
 // 創建一個空的圖書管理系統物件 library。
 const library = [];
@@ -24,15 +24,16 @@ addBook("Harry potter - 6", "JK", 2004);
 addBook("Harry potter - 6", "jimmy", 2014);
 
 // 避免用 `.find(...)` 用 for 迴圈重寫
-function findBook(library, title, author) {
-  for (const book of library) {
-    console.log(book);
-    if (book.title === title && book.author === author) return true;
-  }
-  return false;
+function findBook(title, author) {
+  const foundBook = library.find(
+    (library) => library.title === title && library.author === author
+  );
+  // 如果找到書籍，返回該書籍物件，否則返回 null。
+  return foundBook || null;
 }
-console.log(findBook("library", "Harry potter - 1", "JK"));
-console.log(findBook("library", "Harry potter", "JK"));
+
+console.log(findBook("Harry potter - 1", "JK"));
+console.log(findBook("Harry potter", "JK"));
 
 // 用 for loop 重寫
 // 創建一個函數 borrowBook，接受書名，將該書的借閱狀態設為「已借出」。
