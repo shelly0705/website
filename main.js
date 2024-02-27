@@ -24,12 +24,13 @@ addBook("Harry potter - 6", "JK", 2004);
 addBook("Harry potter - 6", "jimmy", 2014);
 
 // 避免用 `.find(...)` 用 for 迴圈重寫
-function findBook(title, author) {
-  const foundBook = library.find(
-    (library) => library.title === title && library.author === author
-  );
-  // 如果找到書籍，返回該書籍物件，否則返回 null。
-  return foundBook || null;
+function findBook(library, title, author) {
+  for (const book of library) {
+    console.log(book);
+    if (book.title === title && book.author === author) {
+      return true;
+    }
+  return false;
 }
 
 console.log(findBook("Harry potter - 1", "JK"));
