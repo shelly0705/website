@@ -22,32 +22,33 @@ addBook("Harry potter - 4", "JK", 2004);
 addBook("Harry potter - 5", "JK", 2004);
 addBook("Harry potter - 6", "JK", 2004);
 addBook("Harry potter - 6", "jimmy", 2014);
+console.log(library);
 
 // 避免用 `.find(...)` 用 for 迴圈重寫
 function findBook(library, title, author) {
   for (const book of library) {
-    console.log(book);
     if (book.title === title && book.author === author) {
-      return true;
+      return book;
     }
-    return false;
   }
+  return null;
 }
 
-console.log(findBook("Harry potter - 1", "JK"));
-console.log(findBook("Harry potter", "JK"));
+console.log(findBook(library, "Harry potter - 1", "JK"));
+console.log(findBook(library, "Harry potter", "JK"));
 
 // 用 for loop 重寫
 // 創建一個函數 borrowBook，接受書名，將該書的借閱狀態設為「已借出」。
-function borrowBook(title, author) {
-  const book = findBook(title, author);
+function borrowBook(library, title, author) {
+  const book = findBook(library, title, author);
   if (book) {
     book.status = "已借出";
-    console.log(`Book '${title}' has been borrowed.`);
+    console.log(`成功借阅《${title}》`);
   } else {
-    console.log(`Book '${title}' not found.`);
+    console.log(`未找到《${title}》`);
   }
 }
+console.log(borrowBook(library, "Harry potter - 1", "JK"));
 
 // 創建一個函數 returnBook，接受書名，將該書的借閱狀態設為「未借出」。
 // 同上，只不過最後做的事情反過來
